@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     g++ \
     make \
     libsqlite3-dev \
+    libgtest-dev \
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
