@@ -20,6 +20,7 @@ public:
 
     void initializeDatabase();
     void insertRecord(const Record& record);
+    void updateOrCreate(const Record& record); // New method declaration
     std::vector<Record> loadRecords();
 
 private:

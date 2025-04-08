@@ -7,8 +7,8 @@ void Controller::run() {
     model.initializeDatabase();
 
     // Insert some records
-    model.insertRecord(Record(1, "Alice"));
-    model.insertRecord(Record(2, "Bob"));
+    model.updateOrCreate(Record(1, "Alice"));
+    model.updateOrCreate(Record(2, "Bob"));
 
     // Load and display records
     std::vector<Record> records = model.loadRecords();

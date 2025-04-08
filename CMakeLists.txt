@@ -27,7 +27,8 @@ include_directories(${GTEST_INCLUDE_DIRS})
 enable_testing()
 
 # Add the test executable
-add_executable(tests
+add_executable(
+        tests
         tests/test_model.cpp
         tests/test_view.cpp
         tests/test_controller.cpp
@@ -41,3 +42,9 @@ target_link_libraries(tests GTest::GTest GTest::Main SQLite::SQLite3)
 
 # Register the test executable
 add_test(NAME AllTests COMMAND tests)
+
+# Ensure the tests target is built when running 'cmake --build .'
+add_custom_target(build_and_test ALL
+        DEPENDS tests
+        COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
+)
