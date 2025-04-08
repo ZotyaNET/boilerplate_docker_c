@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: debian-gcc
+    volumes:
+      - ./:/app/src:rw
+    working_dir: /app
+    command: ./build/docker_c

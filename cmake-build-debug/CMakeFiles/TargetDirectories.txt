@@ -1,3 +1,0 @@
-/home/ubuntu/CLionProjects/docker-c/cmake-build-debug/CMakeFiles/docker_c.dir
-/home/ubuntu/CLionProjects/docker-c/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/ubuntu/CLionProjects/docker-c/cmake-build-debug/CMakeFiles/rebuild_cache.dir
