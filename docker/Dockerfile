@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     g++ \
     make \
+    libsqlite3-dev \
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -17,14 +18,15 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.30.0/cmake-3.30.0
 # Set the working directory
 WORKDIR /app
 
-# Copy the source code into the container
-COPY ./ /app/src
+# Copy the source code into the container (exclude build artifacts)
+COPY ./ /app
 
-# Create a build directory, configure, and build the project
-RUN mkdir -p build && \
-    cd build && \
-    cmake ../src && \
-    make -j$(nproc)
+# Create a clean build directory, configure, and build the project
+RUN rm -rf /app/cmake-build-debug && \
+    mkdir -p /app/cmake-build-debug && \
+    cd /app/cmake-build-debug && \
+    cmake .. && \
+    cmake --build . --target docker_c
 
 # Set the default command to run the built executable
-CMD ["./build/docker_c"]
+CMD ["./cmake-build-debug/docker_c"]

@@ -9,4 +9,4 @@ services:
     volumes:
       - ./:/app/src:rw
     working_dir: /app
-    command: ./build/docker_c
+    command: ./cmake-build-debug/docker_c
